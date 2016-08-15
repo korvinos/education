@@ -18,7 +18,7 @@ nu = 0.001
 NN = m_NN * x + c_NN
 e2 = np.sum((OLS - NN) ** 2)
 e1 = e2 + 1
-step = 1
+step, epoch = 1, 1
 all_e2 = []
 
 while e2 < e1:
@@ -33,14 +33,15 @@ while e2 < e1:
     all_e2.append(e2)
     e1 = e2
     e2 = np.sum((OLS - NN) ** 2)
-    step += 1
+    epoch += 1
+    
 
 
 
 NN = m_NN * x + c_NN
 
-print('REPORT: y = m*x + c',
-      '\nCOUNT OF STEPS: ', step,
+print('\nREPORT: y = m*x + c',
+      '\nCOUNT OF EPOCHS: ', epoch,
       '\nOLS: ', 'm: ', round(m_OLS, 4), '/ c: ', round(c_OLS, 4),
       '\nNN: ', 'm: ', round(m_NN, 4), '/ c: ', round(c_NN, 4),
       '\nSUM ERROR: ', round(e2, 4))
